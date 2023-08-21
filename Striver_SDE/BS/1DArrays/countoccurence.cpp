@@ -47,6 +47,8 @@ pair<int,int> approach2(int *arr, int n, int k){
     return {fo,lo};
 }
 
+
+
 signed main(){
 
     int arr[] = {1,2,2,3,3,3,3,3,4};
