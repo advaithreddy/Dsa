@@ -36,10 +36,12 @@ void merge(int arr[], int n, int low, int mid, int high){
 
 void msort(int arr[], int n,int low, int high){
     if(low>=high) return;
-    int mid = low + (high - low)/2;
-    msort(arr, n, low, mid);
-    msort(arr,n,mid+1,high);
-    merge(arr, n, low,mid,high);
+    else{
+        int mid = low + (high - low)/2;
+        msort(arr, n, low, mid);
+        msort(arr,n,mid+1,high);
+        merge(arr, n, low,mid,high);
+    }
 }
 
 signed main(){
