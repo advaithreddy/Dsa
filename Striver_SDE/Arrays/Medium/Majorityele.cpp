@@ -38,13 +38,34 @@ int approach2(vector<int> a){
     int n = a.size();
     int el = 0;
     int cnt = 0;
-    for(int )
+    for(int i:a){
+        if(cnt == 0){
+            cnt = 1;
+            el = i;
+        }else if(i == el){
+            cnt++;
+        }else{
+            cnt--;
+        }
+    }
+
+    // By the end of this iteration we will have the majority element in our el
+    // But in case to check again we need to traverse again for some edge case issues
+    int new_cnt = 0;
+    for(int i:a){
+        if(i == el){
+            new_cnt++;
+        }
+    }
+
+    if(new_cnt > (a.size()/2)) return el;
+    return -1;
 }
 
 signed main(){
 
-    vector<int> a = {2,2,1,1,1,2,2};
-    cout<<"The majority element is:\n"<<solve(a);
+    vector<int> a = {2,2,1,1,1,2,2,1,1,3,3,3,3};
+    cout<<"The majority element is:\n"<<approach2(a);
     
     return 0;
 }

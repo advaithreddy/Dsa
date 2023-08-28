@@ -17,7 +17,7 @@ vector<int> permutation(vector<int> a){
     */
 
     int n= a.size();
-    // Step 1 FInd Break point
+    // Step 1 Find Break point
     int break_point = -1;
     for(int i=n-1;i>=0;i--){
         if(a[i] < a[i+1]){

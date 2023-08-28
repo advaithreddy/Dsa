@@ -54,7 +54,7 @@ signed main(){
         cout<<arr[i]<<" ";
     }
     cout<<"\n";
-    rotateleft(arr,n,k);
+    rotateright(arr,n,k);
     cout<<"After rotation:\n";
     for(int i=0;i<n;i++){
         cout<<arr[i]<<" ";
