@@ -8,9 +8,9 @@ typedef vector<int> vi;
    */
 class Solution{
 public:
-    double solve(vi &a, vi &b){
-        int n = a.size(), m = b.size();
-        if(n > m) return solve(b,a);
+    double solve(vi &a, vi &b,int n, int m){
+        // int n = a.size(), m = b.size();
+        if(n > m) return solve(b,a,m,n);
 
         int lefthalf = (n+m+1)/2;
 
@@ -46,10 +46,10 @@ public:
 
 int main() {
     
-    vector<int> a = {1,4,7,10,12};
-    vector<int> b = {2,3,6,15};
+    vector<int> a = {1,2};
+    vector<int> b = {3,4};
     Solution output;
-    double ans = output.solve(a,b);
+    double ans = output.solve(a,b,2,2);
     cout<<fixed<<setprecision(1)<<ans;
 
     return 0;
