@@ -8,4 +8,4 @@ Topics Covered:
 3. Linked Lists
 4. Stacks and Queues
 5. Tree
-6. 
+6. Binary Search Treee
