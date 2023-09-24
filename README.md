@@ -1,8 +1,15 @@
-# Dsa
+# Description
+You can learn a lot from this repo I have almost included every DSA problem I did 
 
-My Dsa Problems
+# Clone the Repo
 
-Topics Covered:
+You can clone this repo to your local machine for better use
+git clone https://github.com/advaithreddy/Dsa.git
+
+# Languages Used
+C++
+
+# Topics Covered:
 1. Arrays
 2. Strings
 3. Linked Lists
@@ -10,3 +17,4 @@ Topics Covered:
 5. Tree
 6. Binary Search Treee
 7. Recursion and DP
+

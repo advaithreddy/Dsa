@@ -185,6 +185,7 @@ void leafTraverse(node* root, int &c){
 
     leafTraverse(root->left,c);
     leafTraverse(root->right,c);
+
     if(root->left == nullptr && root->right == nullptr) c++;
 }
 
