@@ -9,6 +9,10 @@ git clone https://github.com/advaithreddy/Dsa.git
 ## Languages Used
 C++
 
+## You can convert it into these languages
+Rust, Java, Python
+
+
 ## Topics Covered:
 1. Arrays
 2. Strings
