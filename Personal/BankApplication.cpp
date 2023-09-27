@@ -2,7 +2,7 @@
 #include<iostream>
 
 class NewUser{
-private:
+public:
     std::string name;
     int age;
     std::string profession;
@@ -68,10 +68,20 @@ signed main(){
         if(head != nullptr){
             head = new NewUser(name_str, age, profession, spouse, pan_number);   
         }
+        std::cout<<"User account Successfully created\n";
+        std::cout<<"Check The details and enter OK for verfication\n";
+        std::cout<<head->name<<"\n"<<head->age<<"\n"<<head->profession<<"\n";
+        if(head->spouse){
+            std::cout<<"Not married\n";
+        }else{
+            std::cout<<"Married\n";
+        }
+        std::cout<<head->pan_number<<"\n";
     }
     
     if(user_choice == 2){
         // Sign in
+
     }
 
     return 0;
