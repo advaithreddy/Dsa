@@ -10,7 +10,7 @@ git clone https://github.com/advaithreddy/Dsa.git
 C++
 
 ## You can convert it into these languages
-Rust, Java, Python
+Rust, Java, Python, JavaScript, C#
 
 
 ## Topics Covered:
