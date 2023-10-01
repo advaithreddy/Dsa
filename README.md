@@ -22,6 +22,9 @@ Rust, Java, Python, JavaScript, C#
 6. Binary Search Treee
 7. Recursion
 8. Dynamic Programming
+9. Trie
+10. Bit Manipulation
+11. Exception Handling
 
 
 ## Top Interview 150
