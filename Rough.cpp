@@ -420,52 +420,53 @@
 //
 
 #include <bits/stdc++.h>
-
 using namespace std;
 
-vector<int> accumulateDiagonals(const vector<vector<int>>& matrix) {
-    int N = matrix.size();
-    vector<int> diagonalSums;
+class Solution {
+public:
+    bool winnerOfGame(string colors) {
+        int n = colors.length();
+        // base case
+        if(n <= 2) return 1;
 
-    for (int k = N - 1; k >= 1 - N; k--) {
-        int sum = 0;
+        // Take two bools
+        bool Alice = false;
+        bool Bob = false;
 
-        for (int i = 0; i < N; i++) {
-            int j = i + k;
-            if (j >= 0 && j < N) {
-                sum += matrix[i][j];
+
+        int a = 1, b = 1;
+        for(int i=1;i<n-1;i++){
+            while(colors[a] == 'A' && a < n-1){
+                a++;
+            }
+            if(colors[a-1] == 'A' && colors[i+1] == 'A'){
+                Alice = 1;
+            }else{
+                Alice = 0;
+            }
+            while(colors[b] == 'B' && b < n-1){
+                b++;
+            }
+            if(colors[b-1] == 'B' && colors[b+1] == 'B'){
+                Bob = 1;
+            }else{
+                Bob = 0;
             }
         }
+    }
+};
 
-        diagonalSums.push_back(sum);
+signed main(){
+
+
+    Solution output;
+
+    if(output.winnerOfGame(color)){
+        cout<<"Alice is winner\n";
+    }else{
+        cout<<"Bob is winner\n";
     }
 
-    return diagonalSums;
-}
-
-int main() {
-    int t;
-    cin >> t;
-
-    while(t--) {
-        int n;
-        cin >> n;
-
-        vector<vector<int>> matrix(n, vector<int>(n));
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                cin >> matrix[i][j];
-            }
-        }
-
-        vector<int> diagonalSums = accumulateDiagonals(matrix);
-
-        for (int i = 0; i < diagonalSums.size(); i++) {
-            cout << diagonalSums[i] << " ";
-        }
-        cout << endl;
-    }
 
     return 0;
 }
