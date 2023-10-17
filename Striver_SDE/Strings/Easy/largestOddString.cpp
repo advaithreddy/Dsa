@@ -9,7 +9,7 @@ public:
 
         while(!s.empty()){
             int digit = s.back() - '0';
-            if(digit % 2==0){
+            if(digit % 2==0){       
                 s.pop_back();
             }else{
                 ans += s;

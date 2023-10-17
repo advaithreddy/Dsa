@@ -20,6 +20,7 @@ bool solve(string &s, string &t){
     return 0;
 }
 
+// This can be asked in two ways one is left rotation and the other one is right rotation
 signed main(){
 
     string s = "abac";
