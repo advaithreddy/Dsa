@@ -60,37 +60,75 @@ public:
 };
 
 // Stack using linked list
-class node{
+
+// Node structure for the linked list
+struct Node {
     int data;
-    node* next;
+    struct Node* next;
+    
+    // Constructor
+    Node(int value) : data(value), next(nullptr) {}
+};
 
-    node(int n){
-        this->data = n;
-        this->next = NULL;
+class Stackll {
+private:
+    Node* top; // Points to the top of the stack
+
+public:
+    // Constructor
+    Stackll() : top(nullptr) {}
+
+    // Function to check if the stack is empty
+    bool isEmptyll() {
+        return top == nullptr;
     }
 
-    void insert(node* head, int n){
-        node* temp = new node(n);
-        temp ->next = head;
-        head = temp;
+    // Function to push an element onto the stack
+    void pushll(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = top;
+        top = newNode;
+    }
+
+    // Function to pop an element from the stack
+    int popll() {
+        if (isEmptyll()) {
+            cout << "Stack underflow\n";
+            return -1; // Assuming -1 as an indicator of an empty stack
+        }
+        Node* temp = top;
+        int value = temp->data;
+        top = top->next;
+        delete temp;
+        return value;
+    }
+
+    // Function to get the top element of the stack without removing it
+    int peekll() {
+        if (isEmptyll()) {
+            cout << "Stack is empty\n";
+            return -1; // Assuming -1 as an indicator of an empty stack
+        }
+        return top->data;
     }
 };
 
-class stackll{
-    int size;
-    int top;
-    node* head;
-};
+// Example usage
+int main() {
+    Stackll myStack;
 
-template <typename T> T myMax(T x, T y){
-    return (x>y)?x : y;
-}
+    myStack.pushll(10);
+    myStack.pushll(20);
+    myStack.pushll(30);
 
-int main(){
+    cout << "Top element: " << myStack.peekll() << endl;
 
-    cout<<myMax<int>(4,5)<<"\n";
-    cout<<myMax<char>('f','a')<<"\n";
-    cout<<myMax<double>(9.00,5.34)<<"\n";
+    cout << "Popped element: " << myStack.popll() << endl;
+    cout << "Popped element: " << myStack.popll() << endl;
+
+    cout << "Top element: " << myStack.peekll() << endl;
 
     return 0;
 }
+
+
