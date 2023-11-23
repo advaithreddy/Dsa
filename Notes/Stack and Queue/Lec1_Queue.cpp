@@ -8,7 +8,7 @@ class Queue{
     int back;
 public:
     Queue(int n){
-        size  = n;
+        this.   size  = n;
         arr = new int[size];
         front =  0;
         back = 0;

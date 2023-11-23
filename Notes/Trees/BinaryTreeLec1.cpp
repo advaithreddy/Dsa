@@ -100,7 +100,7 @@ void InOrder(node* root){
 
     InOrder(root->left);
     cout<<root->data<<" ";
-    InOrder(root->right);
+    InOrder(root->right); 
 }
 
 // Pre Order

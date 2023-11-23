@@ -24,6 +24,7 @@ void inserttail(Node* &head, int val)
 {
     Node* n = new Node(val);
     if (head == NULL) {
+        n -> next = head;
         head = n;
         return;
     }
