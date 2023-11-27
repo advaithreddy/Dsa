@@ -285,145 +285,49 @@
 //     return 0;
 // }
 
-// Circular queue using array
-#include <iostream>
-
-class CircularQueue {
-private:
-    int* arr;
-    int front;
-    int rear;
-    int capacity;
-
-public:
-    // Constructor
-    CircularQueue(int size) : arr(new int[size]), front(-1), rear(-1), capacity(size) {}
-
-    // Destructor
-    ~CircularQueue() {
-        delete[] arr;
-    }
-
-    // Function to check if the circular queue is empty
-    bool isEmpty() {
-        return front == -1;
-    }
-
-    // Function to check if the circular queue is full
-    bool isFull() {
-        return (rear + 1) % capacity == front;
-    }
-
-    // Function to enqueue (add) an element to the circular queue
-    void enqueue(int value) {
-        if (isFull()) {
-            std::cout << "Queue overflow\n";
-            return;
-        }
-
-        if (isEmpty()) {
-            front = rear = 0;
-        } else {
-            rear = (rear + 1) % capacity;
-        }
-
-        arr[rear] = value;
-    }
-
-    // Function to dequeue (remove) an element from the circular queue
-    int dequeue() {
-        if (isEmpty()) {
-            std::cout << "Queue underflow\n";
-            return -1; // Assuming -1 as an indicator of an empty queue
-        }
-
-        int value = arr[front];
-
-        if (front == rear) {
-            front = rear = -1;
-        } else {
-            front = (front + 1) % capacity;
-        }
-
-        return value;
-    }
-
-    // Function to get the front element of the circular queue without removing it
-    int peek() {
-        if (isEmpty()) {
-            std::cout << "Queue is empty\n";
-            return -1; // Assuming -1 as an indicator of an empty queue
-        }
-        return arr[front];
-    }
-};
-
-// Example usage
-int main() {
-    CircularQueue myQueue(5);
-
-    myQueue.enqueue(10);
-    myQueue.enqueue(20);
-    myQueue.enqueue(30);
-
-    std::cout << "Front element: " << myQueue.peek() << std::endl;
-
-    std::cout << "Dequeued element: " << myQueue.dequeue() << std::endl;
-    std::cout << "Dequeued element: " << myQueue.dequeue() << std::endl;
-
-    std::cout << "Front element: " << myQueue.peek() << std::endl;
-
-    return 0;
-}
-
-
-// // Circular queue using circular linked list
+// // Circular queue using array
 // #include <iostream>
-
-// // Node structure for the circular linked list
-// struct Node {
-//     int data;
-//     Node* next;
-
-//     // Constructor
-//     Node(int value) : data(value), next(nullptr) {}
-// };
 
 // class CircularQueue {
 // private:
-//     Node* front;
-//     Node* rear;
+//     int* arr;
+//     int front;
+//     int rear;
+//     int capacity;
 
 // public:
 //     // Constructor
-//     CircularQueue() : front(nullptr), rear(nullptr) {}
+//     CircularQueue(int size) : arr(new int[size]), front(-1), rear(-1), capacity(size) {}
 
 //     // Destructor
 //     ~CircularQueue() {
-//         // Release memory when the queue is destroyed
-//         while (!isEmpty()) {
-//             dequeue();
-//         }
+//         delete[] arr;
 //     }
 
 //     // Function to check if the circular queue is empty
 //     bool isEmpty() {
-//         return front == nullptr;
+//         return front == -1;
+//     }
+
+//     // Function to check if the circular queue is full
+//     bool isFull() {
+//         return (rear + 1) % capacity == front;
 //     }
 
 //     // Function to enqueue (add) an element to the circular queue
 //     void enqueue(int value) {
-//         Node* newNode = new Node(value);
-
-//         if (isEmpty()) {
-//             front = rear = newNode;
-//         } else {
-//             rear->next = newNode;
-//             rear = newNode;
+//         if (isFull()) {
+//             std::cout << "Queue overflow\n";
+//             return;
 //         }
 
-//         // Make the circular connection
-//         rear->next = front;
+//         if (isEmpty()) {
+//             front = rear = 0;
+//         } else {
+//             rear = (rear + 1) % capacity;
+//         }
+
+//         arr[rear] = value;
 //     }
 
 //     // Function to dequeue (remove) an element from the circular queue
@@ -433,18 +337,14 @@ int main() {
 //             return -1; // Assuming -1 as an indicator of an empty queue
 //         }
 
-//         int value = front->data;
-//         Node* temp = front;
+//         int value = arr[front];
 
 //         if (front == rear) {
-//             // Last element in the queue
-//             front = rear = nullptr;
+//             front = rear = -1;
 //         } else {
-//             front = front->next;
-//             rear->next = front; // Maintain the circular connection
+//             front = (front + 1) % capacity;
 //         }
 
-//         delete temp;
 //         return value;
 //     }
 
@@ -454,13 +354,13 @@ int main() {
 //             std::cout << "Queue is empty\n";
 //             return -1; // Assuming -1 as an indicator of an empty queue
 //         }
-//         return front->data;
+//         return arr[front];
 //     }
 // };
 
 // // Example usage
 // int main() {
-//     CircularQueue myQueue;
+//     CircularQueue myQueue(5);
 
 //     myQueue.enqueue(10);
 //     myQueue.enqueue(20);
@@ -476,3 +376,102 @@ int main() {
 //     return 0;
 // }
 
+
+// Circular queue using circular linked list
+#include <iostream>
+
+// Node structure for the circular linked list
+struct Node {
+    int data;
+    Node* next;
+
+    // Constructor
+    Node(int value) : data(value), next(nullptr) {}
+};
+
+class CircularQueue {
+private:
+    Node* front;
+    Node* rear;
+
+public:
+    // Constructor
+    CircularQueue() : front(nullptr), rear(nullptr) {}
+
+    // Destructor
+    ~CircularQueue() {
+        // Release memory when the queue is destroyed
+        while (!isEmpty()) {
+            dequeue();
+        }
+    }
+
+    // Function to check if the circular queue is empty
+    bool isEmpty() {
+        return front == nullptr;
+    }
+
+    // Function to enqueue (add) an element to the circular queue
+    void enqueue(int value) {
+        Node* newNode = new Node(value);
+
+        if (isEmpty()) {
+            front = rear = newNode;
+        } else {
+            rear->next = newNode;
+            rear = newNode;
+        }
+
+        // Make the circular connection
+        rear->next = front;
+    }
+
+    // Function to dequeue (remove) an element from the circular queue
+    int dequeue() {
+        if (isEmpty()) {
+            std::cout << "Queue underflow\n";
+            return -1; // Assuming -1 as an indicator of an empty queue
+        }
+
+        int value = front->data;
+        Node* temp = front;
+
+        if (front == rear) {
+            // Last element in the queue
+            front = rear = nullptr;
+        } else {
+            front = front->next;
+            rear->next = front; // Maintain the circular connection
+        }
+
+        delete temp;
+        return value;
+    }
+
+    // Function to get the front element of the circular queue without removing it
+    int peek() {
+        if (isEmpty()) {
+            std::cout << "Queue is empty\n";
+            return -1; // Assuming -1 as an indicator of an empty queue
+        }
+        return front->data;
+    }
+};
+
+// Example usage
+int main() {
+    CircularQueue myQueue;
+
+    myQueue.enqueue(10);
+    myQueue.enqueue(20);
+    myQueue.enqueue(30);
+
+    std::cout << "Front element: " << myQueue.peek() << std::endl;
+
+    std::cout << "Dequeued element: " << myQueue.dequeue() << std::endl;
+    std::cout << "Dequeued element: " << myQueue.dequeue() << std::endl;
+
+    std::cout << "Front element: " << myQueue.peek() << std::endl;
+
+    return 0;
+}
