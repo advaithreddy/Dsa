@@ -202,6 +202,7 @@ public:
         do {
             std::cout << temp->data << " ";
             temp = temp->next;
+
         } while (temp != head);
         std::cout << std::endl;
     }
