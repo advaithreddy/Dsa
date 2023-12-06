@@ -6,6 +6,7 @@ Project Description
 
 ### Do
 
+- [ ] Complete Binary Tree  
 
 ### Doing
 
