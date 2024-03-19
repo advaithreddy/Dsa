@@ -510,37 +510,106 @@
 //     return 0;
 // }
 
-
 #include<bits/stdc++.h>
 using namespace std;
 
-int solve(string &s,string &x){
-    int ans = 0;
-    int n = s.length(), m = x.length();
-    while(n<=m){
-        s += s;
-        ans++;
-        n = s.length();
+bool triangular(vector<vector<int>>& matrix){
+    for(int i=0;i<matrix.size();i++){
+        for(int j=i+1;j<matrix.size();j++){
+            if(matrix[i][j] != 0){
+                return false;
+            }
+        }
     }
-    if(s.find(x) != string::npos){
-        return ans;
-    }
-    return -1;
+    return true;
 }
 
-signed main(){
 
-    int t;
-    cout<<"Enter your test cases: ";
-    cin>>t;
-    while(t--){
-        string s,x;
-        cout<<"\nEnter the first String : "; cin>>s; cout<<"\n";
-        cout<<"Enter the second string : "; cin>>x; cout<<"\n";
-        int ans = solve(s,x);
-        if(ans != -1)
-            cout<<"The minimum moves so that we have x as a substring in s is : "<<ans;
-        else   
-            cout<<"It is not possible to have a x as a substring in s.";
+void stringMatrix(string s, vector<vector<char>>& ans, int rows, int cols){
+    int index = 0;
+    for(int i=0;i<rows;i++){
+        for(int j=0;j<cols;j++){
+            if(index < s.length()){
+                ans[i][j] = s[index];
+                index++;
+            }else{
+                ans[i][j] = ' ';
+            }
+        }
     }
+}
+
+
+int factorial(int n){
+    int ans = n;
+    for(int i=n-1;i>0;i--){
+        int sum = 0;
+        for(int j=0;j<i;j++){
+            sum += ans;
+        }
+        ans = sum;
+    }
+    return ans;
+}
+
+double meanArray(vector<int> arr){
+    int firstMin = INT_MAX;
+    int secondMin = numeric_limits<int>::max();
+    for(int i=0;i<arr.size();i++){
+        if(arr[i] < firstMin){
+            secondMin = firstMin;
+            firstMin = arr[i];
+        }else if(arr[i] < secondMin && arr[i] != firstMin){
+            secondMin = arr[i];
+        }
+    }
+    double ans = static_cast<double>(firstMin+secondMin)/2.0;
+    return ans;
+}
+
+int userAbs(int n){
+    if(n==0) return 0;
+    if(n<0){
+        n = n + -(n*2);
+    }
+    return n;
+}
+
+int main(){
+
+    // int n;
+    // cin>>n;
+    // vector<vector<int>> matrix(n, vector<int>(n));
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<n;j++){
+    //         cin>>matrix[i][j];
+    //     }
+    // }
+
+    // if(solve(matrix)){
+    //     cout<<"Given is a lower triangular matrix";
+    // }else{
+    //     cout<<"Not a lower triangular matrix";
+    // }
+
+    // string s;
+    // cin>>s;
+    // int rows = ceil(sqrt(s.length()));
+    // int cols = ceil(static_cast<double>(s.length())/rows);
+    // vector<vector<char>> ans(rows, vector<char>(cols));
+    // stringMatrix(s,ans,rows,cols);
+    // for(int i=0;i<rows;i++){
+    //     for(int j=0;j<cols;j++){
+    //         cout<<ans[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // int n;
+    // cin>>n;
+    // cout<<factorial(n);
+
+    int n;
+    cin>>n;
+    cout<<userAbs(n);
 }

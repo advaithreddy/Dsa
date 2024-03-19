@@ -1,13 +1,16 @@
+Implementation 1
 Types : Binary , Ternary, N - ary Tree
 Binary Search Tree
 Ternary Search Tree
 AVL Tree
 B tree and B+ Tree
+
+Implementation  2
 Red Black Tree
 Interval Tree
 2-3-4 Tree
 Balanced Tree
-Splay Tree
-Quadtree
-Octree
+Splay Tree ?
+Quadtree ?
+Octree ?
 Trie(Prefix Tree)

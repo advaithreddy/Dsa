@@ -1,134 +1,138 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
-class Stack{
+// Implementing stack using an array
+class stack{
 public:
-    // data
-     int size;
-     int top;
-     int *arr;
-    // behaviour
-    Stack(int size){
-        this->size = size;
-        arr = new int[size];
-        top =-1;
-    }
+    int size;
+    int top;
+    int *arr;
 
-    // Making Operations
-    // Push, pop, empty, top
+    stack(int size): size(size), top(-1), arr(new int[size]){}
 
-    void push(int data){
-        if(size - top > 1){
+    // operatins to be done
+    // push
+    void push(int ele){
+        // stack overflow
+        if(top >= size-1){
+            cout<<"Stack Overflow";
+        }else{
             top++;
-            arr[top] = data;
-        }else{
-            cout<<"Stack Overflow\n";
+            arr[top] = ele;
         }
     }
 
+    // pop
     void pop(){
-        if(top>=0){
-            top--;
+        // stack underflow
+        if(top == -1){
+            cout<<"Stack undeflow";
         }else{
-            cout<<"No element in the stack\n";
+            int ele = arr[top];
+            top--;
+            cout<<ele;
         }
     }
 
-    void empty(){
-        if(top == -1){
-            cout<<"Stack is empty\n";
-        }else{
-            cout<<"Stack is not empty\n";
-        }
+    void seetop(){
+        if(top == -1) cout<<"Stack is empty!!";
+        else cout<<arr[top];
     }
 
     void peak(){
-        if(top>=0){
-            cout<<"Top element is\t"<<arr[top];
-        }else{
-            cout<<"Stack is empty\n";
-        }
-    }
-
-    void print(){
-        cout<<"Top of the Stack\n";
-        for(int i=top;i>=0;i--){
+        for(int i = top;i>=0;i--){
             cout<<arr[i]<<"\n";
         }
-        cout<<"Bottom of the Stack\n";
     }
 };
 
-// Stack using linked list
 
-// Node structure for the linked list
-struct Node {
+// stack using a linked list
+// first make the node
+struct node{
     int data;
-    struct Node* next;
+    node* next;
     
-    // Constructor
-    Node(int value) : data(value), next(nullptr) {}
+    // constructor
+    node(int value): data(value), next(NULL){}
 };
 
-class Stackll {
+// stack ll
+class stackll {
 private:
-    Node* top; // Points to the top of the stack
-
+    node* top; // top pointer cause this is not an array we will deal with pointers here
 public:
-    // Constructor
-    Stackll() : top(nullptr) {}
+    // call the stack constructor
+    stackll(): top(nullptr){}
 
-    // Function to check if the stack is empty
-    bool isEmptyll() {
-        return top == nullptr;
+    // operations
+    bool isEmpty(){
+        return top == nullptr; // if top is null then the stack is empty
     }
 
-    // Function to push an element onto the stack
-    void pushll(int value) {
-        Node* newNode = new Node(value);
-        newNode->next = top;
-        top = newNode;
+    void pushll(int value){
+        // insert the value into the node
+        // and we will not have any stack overflow here cause it is not of a fixed size
+        struct node* new_node = new node(value);
+        // now point the node
+        new_node-> next = top;
+        top = new_node;
     }
 
-    // Function to pop an element from the stack
-    int popll() {
-        if (isEmptyll()) {
-            cout << "Stack underflow\n";
-            return -1; // Assuming -1 as an indicator of an empty stack
+    void popll(){
+        if(isEmpty()){
+            cout<<"Stack is empty!!";
+        }else{
+            node* temp = top; // temporarly to delete
+            top = top->next;
+            cout<<temp->data;
+            delete temp;
         }
-        Node* temp = top;
-        int value = temp->data;
-        top = top->next;
-        delete temp;
-        return value;
     }
 
-    // Function to get the top element of the stack without removing it
-    int peekll() {
-        if (isEmptyll()) {
-            cout << "Stack is empty\n";
-            return -1; // Assuming -1 as an indicator of an empty stack
+    void topll(){
+        if(isEmpty()){
+            cout<<"Stack is empty!!";
+        }else{
+            cout<<top->data;
         }
-        return top->data;
+    }
+
+    void peakll(){
+        if(isEmpty()){
+            cout<<"Stack is Empty!";
+        }else{
+            node* temp = top;
+            while(temp != nullptr){
+                cout<<temp->data<<" ";
+                temp = temp->next;
+            }
+        }
     }
 };
 
-// Example usage
-int main() {
-    Stackll myStack;
+signed main(){
 
-    myStack.pushll(10);
-    myStack.pushll(20);
-    myStack.pushll(30);
+    // stack st(4); // an array has been built
 
-    cout << "Top element: " << myStack.peekll() << endl;
+    // st.push(1);
+    // st.push(2);
+    // st.push(3);
+    // st.push(4);
+    // st.pop();
+    // st.seetop();
+    // st.peak();
 
-    cout << "Popped element: " << myStack.popll() << endl;
-    cout << "Popped element: " << myStack.popll() << endl;
+    // stack with Linked list
+    stackll st;
 
-    cout << "Top element: " << myStack.peekll() << endl;
+    st.pushll(5);
+    st.pushll(6);
+    st.pushll(7);
+    st.pushll(8);
+    st.popll();
+    st.topll();
+    st.peakll();
 
     return 0;
 }
-
-

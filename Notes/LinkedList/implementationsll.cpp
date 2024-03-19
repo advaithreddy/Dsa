@@ -1,7 +1,7 @@
 // Singly linked list
 #include <iostream>
 
-struct Node {
+struct Node{
     int data;
     Node* next;
 
@@ -13,7 +13,7 @@ private:
     Node* head;
 
 public:
-    SinglyLinkedList() : head(nullptr) {}
+    SinglyLinkedList() : head(NULL) {}
 
     void append(int value) {
         Node* newNode = new Node(value);
@@ -49,171 +49,171 @@ int main() {
 }
 
 // Doubly linked list
-#include <iostream>
+// #include <iostream>
 
-struct Node {
-    int data;
-    Node* prev;
-    Node* next;
+// struct Node {
+//     int data;
+//     Node* prev;
+//     Node* next;
 
-    Node(int value) : data(value), prev(nullptr), next(nullptr) {}
-};
+//     Node(int value) : data(value), prev(nullptr), next(nullptr) {}
+// };
 
-class DoublyLinkedList {
-private:
-    Node* head;
+// class DoublyLinkedList {
+// private:
+//     Node* head;
 
-public:
-    DoublyLinkedList() : head(nullptr) {}
+// public:
+//     DoublyLinkedList() : head(nullptr) {}
 
-    void append(int value) {
-        Node* newNode = new Node(value);
-        if (head == nullptr) {
-            head = newNode;
-        } else {
-            Node* temp = head;
-            while (temp->next != nullptr) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-            newNode->prev = temp;
-        }
-    }
+//     void append(int value) {
+//         Node* newNode = new Node(value);
+//         if (head == nullptr) {
+//             head = newNode;
+//         } else {
+//             Node* temp = head;
+//             while (temp->next != nullptr) {
+//                 temp = temp->next;
+//             }
+//             temp->next = newNode;
+//             newNode->prev = temp;
+//         }
+//     }
 
-    void display() {
-        Node* temp = head;
-        while (temp != nullptr) {
-            std::cout << temp->data << " ";
-            temp = temp->next;
-        }
-        std::cout << std::endl;
-    }
-};
+//     void display() {
+//         Node* temp = head;
+//         while (temp != nullptr) {
+//             std::cout << temp->data << " ";
+//             temp = temp->next;
+//         }
+//         std::cout << std::endl;
+//     }
+// };
 
-// Usage example:
-int main() {
-    DoublyLinkedList myList;
-    myList.append(1);
-    myList.append(2);
-    myList.append(3);
-    myList.display();
-    return 0;
-}
+// // Usage example:
+// int main() {
+//     DoublyLinkedList myList;
+//     myList.append(1);
+//     myList.append(2);
+//     myList.append(3);
+//     myList.display();
+//     return 0;
+// }
 
-// Circular linked list
-#include <iostream>
+// // Circular linked list
+// #include <iostream>
 
-struct Node {
-    int data;
-    Node* next;
+// struct Node {
+//     int data;
+//     Node* next;
 
-    Node(int value) : data(value), next(nullptr) {}
-};
+//     Node(int value) : data(value), next(nullptr) {}
+// };
 
-class CircularLinkedList {
-private:
-    Node* head;
+// class CircularLinkedList {
+// private:
+//     Node* head;
 
-public:
-    CircularLinkedList() : head(nullptr) {}
+// public:
+//     CircularLinkedList() : head(nullptr) {}
 
-    void append(int value) {
-        Node* newNode = new Node(value);
-        if (head == nullptr) {
-            head = newNode;
-            head->next = head; // Make it circular
-        } else {
-            Node* temp = head;
-            while (temp->next != head) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-            newNode->next = head;
-        }
-    }
+//     void append(int value) {
+//         Node* newNode = new Node(value);
+//         if (head == nullptr) {
+//             head = newNode;
+//             head->next = head; // Make it circular
+//         } else {
+//             Node* temp = head;
+//             while (temp->next != head) {
+//                 temp = temp->next;
+//             }
+//             temp->next = newNode;
+//             newNode->next = head;
+//         }
+//     }
 
-    void display() {
-        if (head == nullptr) {
-            return;
-        }
+//     void display() {
+//         if (head == nullptr) {
+//             return;
+//         }
 
-        Node* temp = head;
-        do {
-            std::cout << temp->data << " ";
-            temp = temp->next;
-        } while (temp != head);
-        std::cout << std::endl;
-    }
-};
+//         Node* temp = head;
+//         do {
+//             std::cout << temp->data << " ";
+//             temp = temp->next;
+//         } while (temp != head);
+//         std::cout << std::endl;
+//     }
+// };
 
-// Usage example:
-int main() {
-    CircularLinkedList myList;
-    myList.append(1);
-    myList.append(2);
-    myList.append(3);
-    myList.display();
-    return 0;
-}
+// // Usage example:
+// int main() {
+//     CircularLinkedList myList;
+//     myList.append(1);
+//     myList.append(2);
+//     myList.append(3);
+//     myList.display();
+//     return 0;
+// }
 
 
-// Circular doubly linked list
-#include <iostream>
+// // Circular doubly linked list
+// #include <iostream>
 
-struct Node {
-    int data;
-    Node* prev;
-    Node* next;
+// struct Node {
+//     int data;
+//     Node* prev;
+//     Node* next;
 
-    Node(int value) : data(value), prev(nullptr), next(nullptr) {}
-};
+//     Node(int value) : data(value), prev(nullptr), next(nullptr) {}
+// };
 
-class CircularDoublyLinkedList {
-private:
-    Node* head;
+// class CircularDoublyLinkedList {
+// private:
+//     Node* head;
 
-public:
-    CircularDoublyLinkedList() : head(nullptr) {}
+// public:
+//     CircularDoublyLinkedList() : head(nullptr) {}
 
-    void append(int value) {
-        Node* newNode = new Node(value);
-        if (head == nullptr) {
-            head = newNode;
-            head->prev = head; // Make it circular
-            head->next = head;
-        } else {
-            Node* temp = head;
-            while (temp->next != head) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-            newNode->prev = temp;
-            newNode->next = head;
-            head->prev = newNode;
-        }
-    }
+//     void append(int value) {
+//         Node* newNode = new Node(value);
+//         if (head == nullptr) {
+//             head = newNode;
+//             head->prev = head; // Make it circular
+//             head->next = head;
+//         } else {
+//             Node* temp = head;
+//             while (temp->next != head) {
+//                 temp = temp->next;
+//             }
+//             temp->next = newNode;
+//             newNode->prev = temp;
+//             newNode->next = head;
+//             head->prev = newNode;
+//         }
+//     }
 
-    void display() {
-        if (head == nullptr) {
-            return;
-        }
+//     void display() {
+//         if (head == nullptr) {
+//             return;
+//         }
 
-        Node* temp = head;
-        do {
-            std::cout << temp->data << " ";
-            temp = temp->next;
+//         Node* temp = head;
+//         do {
+//             std::cout << temp->data << " ";
+//             temp = temp->next;
 
-        } while (temp != head);
-        std::cout << std::endl;
-    }
-};
+//         } while (temp != head);
+//         std::cout << std::endl;
+//     }
+// };
 
-// Usage example:
-int main() {
-    CircularDoublyLinkedList myList;
-    myList.append(1);
-    myList.append(2);
-    myList.append(3);
-    myList.display();
-    return 0;
-}
+// // Usage example:
+// int main() {
+//     CircularDoublyLinkedList myList;
+//     myList.append(1);
+//     myList.append(2);
+//     myList.append(3);
+//     myList.display();
+//     return 0;
+// }
